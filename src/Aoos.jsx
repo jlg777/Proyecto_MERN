@@ -1,10 +1,16 @@
-import { Navbar } from "./components/NavBar"
+import { Router } from "./Router"
+import { Footer } from "./components/Footer"
+import NavbarExample from "./components/Navbar"
+
+
 
 export const App = () => {
     return (
-      <>
-        <Navbar />
-      </>
+      <div>
+        <NavbarExample />
+        <Router />
+        <Footer />
+      </div>
     )
 }
 
