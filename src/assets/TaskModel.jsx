@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
@@ -27,6 +27,7 @@ const taskList = [
 ];
 
 const TaskListModel = ({ id, Title, Subtitle, Text, Done }) => {
+  const [isCompleted, setisCompleted] = useState(Done);
   return (
     <>
       <Card style={{ width: "18rem" }}>
@@ -36,12 +37,8 @@ const TaskListModel = ({ id, Title, Subtitle, Text, Done }) => {
           <Card.Text>{Text}</Card.Text>
           <Card.Link href="#">Card Link</Card.Link>
           <Card.Link href="#">Another Link</Card.Link>
-          <Button
-            className={`btn ${Done ? "btn-success" : "btn-warning"}`}
-            variant="primary"
-          >
-            {Done ? "Completado" : "Completar"}
-          </Button>
+          <Button onClick={() => { setisCompleted(!isCompleted) }} className={`btn ${isCompleted ? "btn-success" : "btn-warning"}`} variant="primary">{isCompleted ? "Completado" : "Completar"}</Button>
+
         </Card.Body>
       </Card>
     </>
