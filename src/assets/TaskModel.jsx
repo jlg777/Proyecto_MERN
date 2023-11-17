@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
@@ -8,48 +8,63 @@ const taskList = [
     Title: "Tarea 1",
     Subtitle: "Subtarea",
     Text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores dicta nobis nemo est, suscipit quasi? Possimus laboriosam, nemo dicta obcaecati fugit nobis, repellat consequuntur et assumenda repudiandae impedit corporis optio?",
-    Done: true
+    Done: true,
   },
   {
     id: 2,
     Title: "Tarea 2",
     Subtitle: "Subtarea",
     Text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores dicta nobis nemo est, suscipit quasi? Possimus laboriosam, nemo dicta obcaecati fugit nobis, repellat consequuntur et assumenda repudiandae impedit corporis optio?",
-    Done: false
+    Done: false,
   },
   {
     id: 3,
     Title: "Tarea 3",
     Subtitle: "Subtarea",
     Text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores dicta nobis nemo est, suscipit quasi? Possimus laboriosam, nemo dicta obcaecati fugit nobis, repellat consequuntur et assumenda repudiandae impedit corporis optio?",
-    Done: true
+    Done: true,
   },
 ];
 
-export const TasksPage = () => {
+const TaskListModel = ({ id, Title, Subtitle, Text, Done }) => {
   return (
     <>
-      <div>TaskPage</div>
+      <Card style={{ width: "18rem" }}>
+        <Card.Body>
+          <Card.Title>{Title}</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">{Subtitle}</Card.Subtitle>
+          <Card.Text>{Text}</Card.Text>
+          <Card.Link href="#">Card Link</Card.Link>
+          <Card.Link href="#">Another Link</Card.Link>
+          <Button
+            className={`btn ${Done ? "btn-success" : "btn-warning"}`}
+            variant="primary"
+          >
+            {Done ? "Completado" : "Completar"}
+          </Button>
+        </Card.Body>
+      </Card>
+    </>
+  );
+};
+
+export const TaskModel = () => {
+  return (
+    <>
+      <div>TaskModel</div>
       <div>
         {taskList.map((task) => {
           return (
-            <Card key={task.id} style={{ width: "18rem" }}>
-              <Card.Body>
-                <Card.Title>{task.Title}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">
-                {task.Subtitle}
-                </Card.Subtitle>
-                <Card.Text>
-                {task.Text}
-                </Card.Text>
-                <Card.Link href="#">Card Link</Card.Link>
-                <Card.Link href="#">Another Link</Card.Link>
-                <Button className={`btn ${task.Done ? "btn-success": "btn-warning"}`} variant="primary">{task.Done ? "Completado":"Completar"}</Button>
-              </Card.Body>
-            </Card>
+            <TaskListModel
+              key={task.id}
+              Title={task.Title}
+              Subtitle={task.Subtitle}
+              Text={task.Text}
+              Done={task.Done}
+            />
           );
         })}
       </div>
     </>
   );
-}
+};
