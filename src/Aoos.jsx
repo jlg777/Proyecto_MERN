@@ -1,15 +1,12 @@
-import { Router } from "./Router"
-import { Footer } from "./components/Footer"
-import NavbarExample from "./components/Navbar"
+import Tasks from "./components/Tasks"
+
 
 
 
 export const App = () => {
     return (
       <div>
-        <NavbarExample />
-        <Router />
-        <Footer />
+       <Tasks />
       </div>
     )
 }
